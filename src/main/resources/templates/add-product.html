@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="fragments/layout :: layout(~{::title},~{::section})">
+<head>
+    <title>Ajout de produits</title>
+</head>
+    <section>
+        <h2>Ajouter un produit</h2>
+        <form th:action="@{/products/add}" method="post" th:object="${product}">
+            <label for="name">Nom du produit :
+                <input type="text" name="name" placeholder="Nom du produit" required th:field="*{name}">
+            </label>
+            <label for="price">Prix du produit :
+                <input type="number" name="price" placeholder="Prix du produit" step="0.01" required>
+            </label>
+            <button type="submit">Ajouter le produit</button>
+            <a th:href="@{/products}">Retour à la liste des produits</a>
+        </form>
+    </section>
+
+
+</html>

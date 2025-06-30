@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.model.Product;
 
@@ -29,6 +31,21 @@ public class ProductController {
         model.addAttribute("productList", products);
         return "products";
     }
+
+    @GetMapping("/products/add")
+    public String addProduct(Model model) {
+        model.addAttribute("product", new Product());
+        return "add-product";
+    }
+
+    @PostMapping("/products/add")
+    public String saveProduct(@ModelAttribute Product product) {
+        products.add(product);
+        return "redirect:/products";
+    }
+
+
+
     
     
 }

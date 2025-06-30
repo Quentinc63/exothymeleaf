@@ -9,6 +9,9 @@
     <h2>
         Nos produits
     </h2>
+    <div>
+        <a th:href="@{/products/add}">Ajouter un produit</a>
+    </div>
     <p th:unless="${#lists.isEmpty(productList)}"> voici nos articles:</p>
     <p th:if="${#lists.isEmpty(productList)}">Aucun produit disponible</p>
     <table th:unless="${#lists.isEmpty(productList)}">
@@ -27,4 +30,5 @@
                 <td th:text="${iterStat.odd ? 'impair' :'pair'}"></td>
             </tr>
         </tbody>
+    </table>
 </section>
