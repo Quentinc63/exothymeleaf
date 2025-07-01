@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.model.Product;
+
+import jakarta.validation.Valid;
 
 
 
@@ -39,7 +42,10 @@ public class ProductController {
     }
 
     @PostMapping("/products/add")
-    public String saveProduct(@ModelAttribute Product product) {
+    public String saveProduct(@Valid @ModelAttribute Product product, BindingResult result) {
+        if (result.hasErrors()) {
+            return "add-product";
+        }
         products.add(product);
         return "redirect:/products";
     }
