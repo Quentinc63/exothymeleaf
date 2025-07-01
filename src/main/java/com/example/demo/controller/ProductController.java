@@ -49,9 +49,4 @@ public class ProductController {
         products.add(product);
         return "redirect:/products";
     }
-
-
-
-    
-    
 }
